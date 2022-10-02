@@ -7,11 +7,13 @@ public class Main {
         Harcos telepiJozsi = new Harcos("a telepi józsi", 1);
 
         System.out.println(jani);
-        System.out.println(telepiJozsi);
 
-        jani.megkuzd(telepiJozsi);
 
-        System.out.println(jani);
-        System.out.println(telepiJozsi);
+//        System.out.println(telepiJozsi);
+//
+//        jani.megkuzd(telepiJozsi);
+//
+//        System.out.println(jani);
+//        System.out.println(telepiJozsi);
     }
 }

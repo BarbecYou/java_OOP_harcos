@@ -67,27 +67,27 @@ public class Harcos {
         if (!(szint == this.szint + 1)){
             return;
         }
-        if (this.tapasztalat > this.getSzintLepeshez()){
-            this.tapasztalat -= this.getSzintLepeshez();
-            this.szint = szint;
-            this.eletero = this.getMaxEletero();
-        }
+        this.tapasztalat -= this.getSzintLepeshez();
+        this.szint = szint;
+        this.eletero = this.getMaxEletero();
     }
 
     public void setTapasztalat(int tapasztalat) {
         this.tapasztalat = tapasztalat;
-        if (tapasztalat > this.getSzintLepeshez()){
-            this.szint ++;
+        if (tapasztalat >= this.getSzintLepeshez()){
+            this.setSzint(this.getSzint() + 1);
         }
     }
 
     public void setEletero(int eletero) {
-        this.eletero = eletero;
         if (eletero <= 0){
             this.tapasztalat = 0;
+            this.eletero = 0;
         }
-        if (eletero > this.eletero){
+        else if (eletero > this.eletero){
             this.eletero = this.getMaxEletero();
+        } else {
+            this.eletero = eletero;
         }
     }
 
