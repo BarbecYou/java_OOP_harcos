@@ -132,17 +132,27 @@ public class Main {
                 break;
         }
         Random rnd = new Random();
-        int random = rnd.nextInt(harcosok.size() - 1);
+        Harcos randomHarcos = null;
+        boolean isValidated = false;
+        while (!isValidated){
+            int random = rnd.nextInt(harcosok.size() - 1);
+            randomHarcos = harcosok.get(random);
+            if (randomHarcos.getEletero() > 0){
+                isValidated = true;
+            }
+        }
+
         if (korSzam % 3 == 0){
             System.out.println();
-            System.out.println("Váratlan esemény! " + harcosok.get(random).getNev() + " megtámadott!");
-            harcosok.get(random).megkuzd(sajatHarcos);
-            System.out.println("Küzdelem kimenete: " + (sajatHarcos.getEletero() > harcosok.get(random).getEletero() ?
-                    "A te karaktered" : harcosok.get(random).getNev()) + " győzött!");
+            System.out.println("Váratlan esemény! " + randomHarcos.getNev() + " megtámadott!");
+            randomHarcos.megkuzd(sajatHarcos);
+            System.out.println("Küzdelem kimenete: " + (sajatHarcos.getEletero() > randomHarcos.getEletero() ?
+                    "A te karaktered" : randomHarcos.getNev()) + " győzött!");
             System.out.println(sajatHarcos);
-            System.out.println(harcosok.get(random));
+            System.out.println(randomHarcos);
             System.out.println();
             System.out.println("Minden harcos gyógyul!");
+            sajatHarcos.gyogyul();
             int f = 1;
             for (Harcos h : harcosok){
                 h.gyogyul();
